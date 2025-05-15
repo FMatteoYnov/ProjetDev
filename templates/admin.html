@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Panneau Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h1>🎮 Admin Matchmaking</h1>
+      <a href="{{ url_for('admin_logout') }}" class="btn delete">🚪 Se déconnecter</a>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+      <h2>Bienvenue, {{ admin_user }}</h2>
+      <a href="{{ url_for('admin_logout') }}" class="btn back">⬅ Retour à l’accueil</a>
+    </div>
+
+    <hr>
+
+    <a class="btn primary" href="/admin/file_attente/new">➕ Ajouter un joueur</a>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th><th>Pseudo</th><th>IP</th><th>Port</th><th>Date</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for joueur in file_attente %}
+        <tr>
+          <td>{{ joueur[0] }}</td>
+          <td>{{ joueur[1] }}</td>
+          <td>{{ joueur[2] }}</td>
+          <td>{{ joueur[3] }}</td>
+          <td>{{ joueur[4] }}</td>
+          <td>
+            <a class="btn edit" href="/admin/file_attente/edit/{{ joueur[0] }}">✏️</a>
+            <a class="btn delete" href="/admin/file_attente/delete/{{ joueur[0] }}" onclick="return confirm('Supprimer ?')">🗑️</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

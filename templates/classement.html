@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Classement</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      padding: 50px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .back-btn:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏆 Classement des joueurs</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Joueur</th>
+          <th>Victoires</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for joueur, victoires in classement %}
+        <tr>
+          <td>{{ joueur }}</td>
+          <td>{{ victoires }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}" class="back-btn">⬅ Retour au jeu</a>
+  </div>
+</body>
+</html>

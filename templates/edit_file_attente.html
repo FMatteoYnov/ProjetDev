@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifier joueur</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>✏️ Modifier le joueur</h1>
+    <form method="POST">
+      <label>Pseudo</label>
+      <input type="text" name="pseudo" value="{{ joueur[1] }}" required>
+
+      <label>IP</label>
+      <input type="text" name="ip" value="{{ joueur[2] }}" required>
+
+      <label>Port</label>
+      <input type="number" name="port" value="{{ joueur[3] }}" required>
+
+      <button class="btn primary" type="submit">Mettre à jour</button>
+      <a class="btn" href="{{ url_for('admin_panel') }}">⬅ Retour</a>
+    </form>
+  </div>
+</body>
+</html>

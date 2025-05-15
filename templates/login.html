@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Connexion Administrateur</h1>
+    <form method="POST">
+      <label>Nom d’utilisateur</label>
+      <input type="text" name="username" placeholder="Ex: Mahdi" required>
+
+      <label>Mot de passe</label>
+      <input type="password" name="password" placeholder="Mot de passe" required>
+
+      <button class="btn primary" type="submit">Se connecter</button>
+    </form>
+
+    <div style="margin-top: 20px; text-align: center;">
+      <a href="{{ url_for('admin_logout') }}" class="btn back">⬅ Retour à l’accueil</a>
+    </div>
+
+    {% if error %}
+      <p style="color: red; margin-top: 15px;">{{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>
